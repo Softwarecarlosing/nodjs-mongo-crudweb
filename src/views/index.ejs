@@ -1,0 +1,74 @@
+<% include partials/_header %>
+  
+<div class="constainer">
+  <div class="row">
+
+  <div class="col-md-5">
+  
+    <div class="card">
+       <div class="card-body">
+         <form action="/add" method="POST">
+           <div class="form-group">
+              <input type="text" name="title" placeholder="Insert" class="form-control">
+              
+           </div>
+           <div class="form-group">
+              <textarea name="description" cols="80" class="form-control" placeholder="insert a descrition"
+                >  </textarea>
+           </div>
+           <button type="submit" class="btn btn-prymary btn-block">
+             Add
+           </button>
+         </form>
+
+       </div>
+
+    </div>
+
+
+  </div>
+
+  <div class="col-md-7">
+
+    <table class="table table-bordered table-hover">
+    <thead>
+       <tr>
+         <th>Numero </th>
+         <th> Title </th>
+         <th> Description</th>
+         <th> Operation </th>
+       </tr>
+
+    </thead>
+
+    <tbody>
+     <% for(var i = 0; i < task.leng; i++) { %>
+       <tr>
+      <td> <%= i + 1 %></td>
+      <td> <%= task[i].title %></td>
+      <td> <%= task[i].description %></td>
+      <td>
+        <a href="/turn/<%= task[i]._id %>"
+           class="btn <%= tasks[i].status ? 'btn success' : 'btn-dark' %>">Done</a>
+        <a href="/delete/<%= task[i]._id %>" class="btn btn-danger">Delete</a>
+        <a href="/edit/<%= tasks[i]._id %>"  class="btn btn-info">Edit</a>
+       </td>
+       </tr>
+
+    <%  } %>
+    </tbody>
+
+      </table>
+
+
+  </div>
+
+</div>
+
+
+</div>  
+   
+
+<% include partials/_footer %>
+
+ 
